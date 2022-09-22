@@ -17,7 +17,10 @@ SRC = push_swap.c \
 		utiels.c\
 		stack_creation.c\
 		push.c\
-		swap.c
+		swap.c\
+		rotate.c\
+		rules.c\
+		sorting.c
 
 OBJ = $(SRC:.c=.o) $(F_LIBFT_PLUS:.c=.o)
 
@@ -43,8 +46,7 @@ fclean : clean
 		@echo	"\033[0;0m"
 
 test:all
-		./push_swap 1 3 4 2416 351 5 2 5878 1315 2134
-
+		./push_swap  1 54 311 65 2 8  9 66 18  123 654 22 654 321 53 3 52 21 51
 re : fclean all
 
 .phony: all re clean fclean 
