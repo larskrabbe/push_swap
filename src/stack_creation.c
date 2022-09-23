@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_creation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:49:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/22 19:36:14 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/22 21:32:27 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,18 @@
 	t_stack stack -> if already existing it the new member will be added at the end if not it will be created
 	int	value -> value that will be inserted
 */
-static t_stack	*add_stack(t_stack *stack, int value, int count)
+static t_stack	*add_stack(t_stack *stack, int value)
 {
 	t_stack *tmp;
 	t_stack	*top;
-	
-	top = stack; 
-	tmp = calloc(1,sizeof(t_stack));
+	tmp = ft_calloc(1,sizeof(t_stack));
 	if (tmp == NULL)
 	{
 		ft_putstr_fd("allocation failed in f create_new_stack",1);
 		return(NULL);
 	}
-	if (top == NULL)
+	top = stack; 
+	if (stack == NULL)
 	{
 		top = tmp;
 		top->next = top;
@@ -44,7 +43,6 @@ static t_stack	*add_stack(t_stack *stack, int value, int count)
 		top->back = tmp;
 	}
 	tmp->value = value;
-	tmp->num = count;
 	
 	return(top);
 }
@@ -56,7 +54,7 @@ t_stack	*stack_setup(int argv,char *argc[],t_stack *stack)
 	i = 1;
 	while(argv > i)
 	{
-		stack = add_stack(stack,ft_atoi(argc[i]),i);//need to check if the inout is valid
+		stack = add_stack(stack,ft_atoi(argc[i]));//need to check if the inout is valid
 		i++;
 	}
 	return(stack);
