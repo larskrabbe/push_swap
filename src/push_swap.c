@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:06:57 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/22 22:51:25 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/23 19:22:06 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ int	main(int argv,char *argc[])
 
 	m_s.stack_a = NULL;
 	m_s.stack_b = NULL;
-	if (argv <= 3)
-		my_error(" not enough arguments");
+	if (argv <= 2)
+		my_error(" \nnot enough arguments");
 	m_s.stack_a = stack_setup(argv,argc,m_s.stack_a);
-//	m_s.max = m_s.stack_a->back->num;
-	print_stack((m_s.stack_a));
-	print_stack((m_s.stack_b));
-	// here will be start the sorting
+	//	m_s.max = m_s.stack_a->back->num;
+	// print_stack((m_s.stack_a));
+	// print_stack((m_s.stack_b));
+	// //rules(SA,&m_s);
+	// // here will be start the sorting
 	sort_stack(&m_s);
-	print_stack((m_s.stack_a));
-	print_stack((m_s.stack_b));
+	// print_stack((m_s.stack_a));
+	// print_stack((m_s.stack_b));
 	return(0);
 }

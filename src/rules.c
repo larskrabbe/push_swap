@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:25:26 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/23 08:16:42 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/23 18:20:28 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ static void	rotate_rules(char *rule,t_main *m_s)
 	if (rule[2] == '\0')
 	{
 			if (rule[1] == 'a' || rule[1] == 'r')
-				rotate(&m_s->stack_a);
+				m_s->stack_a = rotate(&m_s->stack_a);
 			if (rule[1] == 'b' || rule[1] == 'r')
-				rotate(&m_s->stack_b);
+				m_s->stack_b = rotate(&m_s->stack_b);
 	}
 	else
 	{
 			if (rule[2] == 'a' || rule[2] == 'r')
-				reverse_rotate(&m_s->stack_a);
+				m_s->stack_a = reverse_rotate(&m_s->stack_a);
 			if (rule[2] == 'b' || rule[2] == 'r')
-				reverse_rotate(&m_s->stack_b);
+				m_s->stack_b = reverse_rotate(&m_s->stack_b);
 	}	
 }
 
@@ -38,9 +38,9 @@ void	rules(char *rule,t_main *m_s)
 	if (rule[0] == 's')
 	{
 		if (rule[1] == 'a' || rule[1] == 's')
-			swap(m_s->stack_a);
+			m_s->stack_a = swap(m_s->stack_a);
 		if (rule[1] == 'b' || rule[1] == 's')
-			swap(m_s->stack_b);
+			m_s->stack_b = swap(m_s->stack_b);
 	}
 	else if (rule[0] == 'p')
 	{
@@ -51,8 +51,6 @@ void	rules(char *rule,t_main *m_s)
 	}
 	else
 		rotate_rules(rule,m_s);
-	if(rule[0]== 'r')
-		return;
 	if (rule[2] == '\0')
 		write(1,rule,2);
 	else

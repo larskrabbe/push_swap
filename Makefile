@@ -45,8 +45,11 @@ fclean : clean
 		rm -f $(NAME)
 		@echo	"\033[0;0m"
 
+ARG = "1 3 2 5 4 9 7 8"
 test:all
-		./push_swap  1 54 311 65 2 8  9 66 18  123 888 22 654 321 53 3 52 21 51
+		./push_swap $(ARG)
+		./push_swap $(ARG) | wc -l
+		./push_swap $(ARG) | ./checker_MAC $(ARG)
 testb:all
 				./push_swap  1 2 3 5 4
 re : fclean all

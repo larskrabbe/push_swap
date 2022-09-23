@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/22 22:47:27 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/23 18:39:33 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,10 @@ void	print_stack_reverse(t_stack *stack);
 /*
 	turns the argumens in to doppel linked list
 
-	int argv -> amount of argument that was passed with the exucutable 
-	char *argc[] -> the string of number in the arguments
+	char *argc-> the string of number in the arguments
 	t_stack *stack ->  the pointer to the stack to store everthing 
 */
 t_stack	*stack_setup(int argv,char *argc[],t_stack *stack);
-
 
 /*
 	Swap the first 2 elements at the top of stack a

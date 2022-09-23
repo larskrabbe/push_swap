@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:31:33 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/22 19:56:09 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/23 15:43:09 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void print_struct_l_r(t_stack *stack)
 }
 void	my_error(char *message)
 {
+	// if (message != NULL)
+	// 	write(STDERR_FILENO,"Error\n",7);
 	printf("\n\033[1;31m%s\033[1;0m\n",message);
 	exit(0);
 }

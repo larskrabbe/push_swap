@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 16:43:19 by lkrabbe           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/23 12:51:06 by lkrabbe          ###   ########.fr       */
-=======
-/*   Updated: 2022/09/23 09:52:08 by lkrabbe          ###   ########.fr       */
->>>>>>> 67519b9c74e0b889652894cd3be076bf73af4ce1
+/*   Created: 2022/09/23 13:01:35 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/09/23 18:49:03 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,15 +114,20 @@ void	sort_stack(t_main *m_s)
 			else
 				rules(PB,m_s);
 		else
+		if(CRNT->value == is_biggest(m_s->stack_a) && NEXT->value > BACK->value)
+			rules(SA,m_s);
+		else
 			rules(RA,m_s);
-		if(m_s->stack_b != NULL)
+		while(m_s->stack_b != NULL)
 		{
 			if (m_s->stack_b->value > BACK->value && m_s->stack_b->value < CRNT->value)
 				rules(PA,m_s);
-			if (m_s->stack_b != NULL && m_s->stack_b->value < is_smallest(m_s->stack_a) && is_smallest(m_s->stack_a) == CRNT->value)
+			else if (m_s->stack_b != NULL && m_s->stack_b->value < is_smallest(m_s->stack_a) && is_smallest(m_s->stack_a) == CRNT->value)
 				rules(PA,m_s);
-			if (m_s->stack_b != NULL && m_s->stack_b->value > is_biggest(m_s->stack_a) && is_biggest(m_s->stack_a) == BACK->value)
+			else if (m_s->stack_b != NULL && m_s->stack_b->value > is_biggest(m_s->stack_a) && is_biggest(m_s->stack_a) == BACK->value)
 				rules(PA,m_s);
+			else
+				break;
 		}
 		//print_stack(m_s->stack_a);
 	}
