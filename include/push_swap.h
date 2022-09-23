@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/22 19:27:44 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/22 22:47:27 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,3 +157,7 @@ void	rules(char *rule,t_main *m_s);
 
 */
 void	sort_stack(t_main *a_s);
+
+
+int is_smallest(t_stack *stack);
+int is_biggest(t_stack *stack);

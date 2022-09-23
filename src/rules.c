@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:25:26 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/22 20:08:28 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/23 08:16:42 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	rules(char *rule,t_main *m_s)
 	}
 	else
 		rotate_rules(rule,m_s);
+	if(rule[0]== 'r')
+		return;
 	if (rule[2] == '\0')
 		write(1,rule,2);
 	else

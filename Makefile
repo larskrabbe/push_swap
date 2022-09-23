@@ -46,7 +46,9 @@ fclean : clean
 		@echo	"\033[0;0m"
 
 test:all
-		./push_swap  1 54 311 65 2 8  9 66 18  123 654 22 654 321 53 3 52 21 51
+		./push_swap  1 54 311 65 2 8  9 66 18  123 888 22 654 321 53 3 52 21 51
+testb:all
+				./push_swap  1 2 3 5 4
 re : fclean all
 
 .phony: all re clean fclean 
