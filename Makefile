@@ -22,10 +22,10 @@ SRC = push_swap.c \
 		rules.c\
 		sorting.c
 
-OBJ = $(SRC:.c=.o) $(F_LIBFT_PLUS:.c=.o)
+OBJ = $(SRC:.c=.o) $(F_LIBFT_PLUS:.c=.o) 
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $< -o $@ 
+	$(CC) -c $(CFLAGS) $< -o  $@ 
 
 all : $(LIBFT_LIB) $(OBJ)
 	@echo	"\033[0;32m compiling client\n\033[0m"

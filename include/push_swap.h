@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/23 18:39:33 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/24 20:58:04 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef struct s_stack
 {
 	int				value;
-	int				num;
+	int				index;
 	struct s_stack	*next;
 	struct s_stack	*back;
 }t_stack;
@@ -50,7 +50,6 @@ typedef struct s_main
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		max;
 }t_main;
 
 /*

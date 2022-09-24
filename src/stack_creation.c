@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:49:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/23 19:21:01 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/24 21:05:02 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,14 @@ static t_stack	*add_stack(t_stack *stack, int value)
 	return(top);
 }
 
-int	check_for_valid_number(char *str)
+/*
+	checks if the string would be a valid number
+	cant contain multiple + or - signs and any other chars
+
+	char *str -> string that will be check if it a number
+	returns -> 1 if it valid and 0 if not
+*/
+static int	check_for_valid_number(char *str)
 {
 	int i;
 
@@ -66,36 +73,52 @@ int	check_for_valid_number(char *str)
 		return(0);
 }
 
+t_stack *add_index(t_stack *stack,int stacksize)
+{
+	int next_biggest;
+	int i;
+	t_stack *tmp;
+	next_biggest = is_biggest(stack);
+	
+	i = is_smallest(stack);
+	while(stack->next == stack)
+	{
+		if (stack->value > i && stack->value < next_biggest)
+			tmp = stack;
+		stack = stack->next;
+	}
+		if (stack->value > i && stack->value < next_biggest)
+			tmp = stack;
+}
+
 
 t_stack	*stack_setup(int argv,char *argc[],t_stack *stack)
 {
-	int		i;
+	int			i;
+	char	**strings;
+	int			p = argv;
+	int			stacksize;
 
-	i = 1;
-	while(argv > i)
+	stacksize = 0;
+	p = 1;
+	while(p < argv)
 	{
-		if(check_for_valid_number(argc[i]) == 1)
-			my_error("contains not allowed input");
-		stack = add_stack(stack,ft_atoi(argc[i]));//need to check if the inout is valid
-		i++;
+		i = 0;
+		strings = ft_split(argc[p], ' ');
+		if(strings[0] == NULL)
+			my_error("contains not allowed input");// need to free evrything
+		while (strings[i] != NULL)
+		{
+			if(check_for_valid_number(strings[i]) != 1)
+				my_error("contains not allowed input");
+			stack = add_stack(stack,ft_atoi(strings[i]));//need to check if the inout is valid
+			stacksize++;
+			free(strings[i]);
+			i++;
+		}
+		free(strings);
+		p++;
 	}
+	add_index(stack,stacksize);
 	return(stack);
 }
-
-// t_stack	*stack_setup(char *argc,t_stack *stack)
-// {
-// 	int		i;
-// 	char **ptr;
-	
-// 	i = 0;
-// 	ptr = ft_split(argc,' ');
-// 	while(ptr[i] != NULL)
-// 	{
-// 		stack = add_stack(stack,ft_atoi(ptr[i]));//need to check if the inout is valid
-// 		free(ptr[i]);
-// 		i++;
-// 	}
-// 	free(ptr);
-// 	return(stack);
-// }
- 
