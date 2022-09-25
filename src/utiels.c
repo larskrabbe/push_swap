@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:31:33 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/23 15:43:09 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/25 13:51:04 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,26 @@ void	print_stack(t_stack *stack)
 		{
 			tmp = tmp->next;
 			printf("%i ",tmp->value);
+			i++;
+		}
+	printf("\n");
+}
+
+void	print_stack_index(t_stack *stack)
+{
+	t_stack *tmp;
+	int 	i = 0;
+	if (stack == NULL)
+	{
+		printf("Empty stack\n");
+		return;
+	}
+	tmp = stack;
+		printf("%i ",tmp->index);
+	while(tmp->next != stack )
+		{
+			tmp = tmp->next;
+			printf("%i ",tmp->index);
 			i++;
 		}
 	printf("\n");
@@ -63,8 +83,9 @@ void print_struct_l_r(t_stack *stack)
 }
 void	my_error(char *message)
 {
-	// if (message != NULL)
-	// 	write(STDERR_FILENO,"Error\n",7);
+// 	if (message != NULL)
+// 		write(1,"Error Bitch\n",13);
 	printf("\n\033[1;31m%s\033[1;0m\n",message);
+	// he we need to free everthing
 	exit(0);
 }

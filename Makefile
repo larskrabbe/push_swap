@@ -20,7 +20,8 @@ SRC = push_swap.c \
 		swap.c\
 		rotate.c\
 		rules.c\
-		sorting.c
+		sorting.c\
+		checkers.c
 
 OBJ = $(SRC:.c=.o) $(F_LIBFT_PLUS:.c=.o) 
 
@@ -28,8 +29,9 @@ OBJ = $(SRC:.c=.o) $(F_LIBFT_PLUS:.c=.o)
 	$(CC) -c $(CFLAGS) $< -o  $@ 
 
 all : $(LIBFT_LIB) $(OBJ)
-	@echo	"\033[0;32m compiling client\n\033[0m"
+	@echo	"\033[0;32m compiling push_swap\n\033[0m"
 	$(CC) $(OBJ) $(LIBFT_FLAGS) -o $(NAME)
+	@echo	"\033[0;32m compiling finished\n\033[0m"
 
 $(LIBFT_LIB):
 	# @$(MAKE) -C $(F_LIBFT)
@@ -45,13 +47,13 @@ fclean : clean
 		rm -f $(NAME)
 		@echo	"\033[0;0m"
 
-ARG = "1 3 2 5 4 9 7 8"
+ARG = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 0 21"
 test:all
 		./push_swap $(ARG)
 		./push_swap $(ARG) | wc -l
 		./push_swap $(ARG) | ./checker_MAC $(ARG)
 testb:all
-				./push_swap  1 2 3 5 4
+				./push_swap  1 2 3 5 4 12 -8 9 9999
 re : fclean all
 
 .phony: all re clean fclean 

@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 18:12:20 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/22 15:29:21 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/25 13:54:06 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 	returns the structure with next and back equel to NULL
 */
- t_stack *pull(t_stack **stack)
+static t_stack	*pull(t_stack **stack)
 {
 	t_stack *tmp;
 
@@ -41,7 +41,7 @@
 	return(tmp);
 }
 
-t_stack *insert(t_stack *stack, t_stack *new)
+static t_stack	*insert(t_stack *stack, t_stack *new)
 {
 	if (new == NULL)
 	{

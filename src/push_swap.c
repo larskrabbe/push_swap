@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:06:57 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/24 20:11:12 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/25 14:15:27 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,14 @@ int	main(int argv,char *argc[])
 
 	m_s.stack_a = NULL;
 	m_s.stack_b = NULL;
-	if (argv <= 2)
+	if (argv < 2)
 		my_error(" \nnot enough arguments");
-	m_s.stack_a = stack_setup(argv,argc,m_s.stack_a);
-	//	m_s.max = m_s.stack_a->back->num;
-	// print_stack((m_s.stack_a));
-	// print_stack((m_s.stack_b));
-	// //rules(SA,&m_s);
-	// // here will be start the sorting
+	m_s.stack_a = stack_setup(argv,argc,&m_s);
+	print_stack_index(m_s.stack_a);
+	print_stack_index(m_s.stack_b);
+	ft_putnbr_fd(m_s.max,1);
 	sort_stack(&m_s);
-	// print_stack((m_s.stack_a));
-	// print_stack((m_s.stack_b));
+	print_stack_index(m_s.stack_a);
+	print_stack_index(m_s.stack_b);
 	return(0);
 }
