@@ -47,7 +47,7 @@ fclean : clean
 		rm -f $(NAME)
 		@echo	"\033[0;0m"
 
-ARG = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 0 21"
+ARG = " 1 4 2 3 5"
 test:all
 		./push_swap $(ARG)
 		./push_swap $(ARG) | wc -l

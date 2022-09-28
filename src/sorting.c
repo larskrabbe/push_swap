@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:01:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/28 17:13:16 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:33:12 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@
 // 		rules(RA,m_s);
 
 
-# define A m_s->stack_a
-# define B m_s->stack_b
 # define B_valid B != NULL && B->next != B
 # define A_valid A != NULL && A->next != A
 
@@ -90,48 +88,64 @@
  * @brief 
  * 
  */
-void	r_or_rr(stack *stack_insert,stack *stack_pull)
+int	r_or_rr(t_stack *stack_insert,t_stack *stack_pull)
 {
 	int r;
 	int rr;
 	t_stack *tmp;
 
-	
 	tmp = stack_insert;
 	r = 0;
 	rr = 0;
-	while(tmp->index < stack_pull->index && tmp->back->index > stack_pull->index)
+	while(tmp->index < stack_pull->index && tmp->back->index > stack_pull->index )
 	{
-		tmp = tmp->next:
+		tmp = tmp->next;
 		r++;
 	}
 	tmp = stack_insert;
 	while(tmp->index < stack_pull->index && tmp->back->index > stack_pull->index)
 	{
-		tmp = tmp->back:
+		tmp = tmp->back;
 		rr++;
 	}
+	printf("r = %i rr = %i \n",r ,rr);
+	if(r >= rr)
+		return(r);
+	else
+		return(rr * -1);
 }
 
-void	quick_sort(t_main m_s)
+void	quick_sort(t_main *m_s)
 {
-	while(stack_length > 3)
+	while(stack_length(A) > 3)
 		rules(PB,m_s);
-	if (is_smallest(A)->next == is_biggest())
+	if (is_smallest(A)->next == is_biggest(A))
 	{
 		rules(SA,m_s);
 	}
-	if(A == is_biggest(a))
+	if (A != is_smallest(A))
 	{
-		rules(RA,m_s);
+		if(A == is_biggest(A))
+		{
+			rules(RA,m_s);
+		}
+		else
+		{
+			rules(RRA,m_s);
+		}
 	}
-	else
+	while(B != NULL)
 	{
-		rules(RRA,m_s)
+		if(r_or_rr(A,B) == 0)
+			rules(PA,m_s);
+		else if(r_or_rr(A,B) < 0)
+			rules(RA,m_s);
+		else
+			rules(RRA,m_s);
 	}
 }
 void	sort_stack(t_main *m_s)
 {
-	if(m_s <= 5)
+	if(stack_length(A) <= 5)
 	quick_sort(m_s);
 }

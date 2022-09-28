@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/26 16:34:49 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:22:40 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
+
+
+# define A m_s->stack_a
+# define B m_s->stack_b
 
 /*
 	struct to store value and the relativ position in the doppelt linked list
@@ -125,6 +129,14 @@ t_stack	*rotate(t_stack **stack);
 */
 t_stack	*reverse_rotate(t_stack **stack);
 
+/**
+ * @brief push the top struct of stack_pull on the top position of stack_insert
+ * 
+ * @param stack_insert stack to insert in
+ * @param stack_pull stack to pull from
+ */
+void	push(t_stack **stack_insert,t_stack **stack_pull);
+
 /*
 	Choose the currect funktion to change the stacks depending on the rules 
 
@@ -156,6 +168,8 @@ t_stack *is_smallest(t_stack *stack);
  * 
  */
 t_stack *is_biggest(t_stack *stack);
+
+
 /**
  * @brief returns the size of the stack.
  * 

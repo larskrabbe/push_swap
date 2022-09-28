@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:25:26 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/24 20:42:55 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:20:35 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	rules(char *rule,t_main *m_s)
 	else
 		write(1,rule,3);
 	write(1,"\n",1);
-	// print_stack((m_s->stack_a));
-	// print_stack((m_s->stack_b));
-	// write(1,"\n",1);
+	print_stack((m_s->stack_a));
+	print_stack((m_s->stack_b));
+	write(1,"\n",1);
 }
