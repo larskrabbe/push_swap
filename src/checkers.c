@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 13:02:44 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/25 13:37:21 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/26 16:10:08 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,23 @@ int is_small_big(t_stack *stack_a)
 				return(-1);
 	}
 	return(1);
+}
+
+int stack_length(t_stack *stack)
+{
+	int 	len;
+	t_stack *tmp;
+
+	if (stack == NULL)
+		return(0);
+	len = 0;
+	tmp = stack;
+	while (tmp->next != stack)
+	{
+		len++;
+		tmp = tmp->next;
+	}
+	tmp = tmp->next;
+	len++;
+	return(len);
 }

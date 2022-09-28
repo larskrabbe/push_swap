@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/25 14:05:55 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/26 16:34:49 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,15 @@ t_stack	*look_for_value(t_stack *stack,int value);
 void	print_stack_index(t_stack *stack);
 
 t_stack *is_smallest(t_stack *stack);
-
+/**
+ * @brief 
+ * 
+ */
 t_stack *is_biggest(t_stack *stack);
+/**
+ * @brief returns the size of the stack.
+ * 
+ * @param stack  Pointer to the top position of the stack
+ * @return returns the length of the stack as a int
+ */
+int stack_length(t_stack *stack);

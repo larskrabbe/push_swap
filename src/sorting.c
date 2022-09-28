@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:01:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/25 16:00:22 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/28 17:13:16 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,35 +86,52 @@
 # define B_valid B != NULL && B->next != B
 # define A_valid A != NULL && A->next != A
 
+/**
+ * @brief 
+ * 
+ */
+void	r_or_rr(stack *stack_insert,stack *stack_pull)
+{
+	int r;
+	int rr;
+	t_stack *tmp;
 
+	
+	tmp = stack_insert;
+	r = 0;
+	rr = 0;
+	while(tmp->index < stack_pull->index && tmp->back->index > stack_pull->index)
+	{
+		tmp = tmp->next:
+		r++;
+	}
+	tmp = stack_insert;
+	while(tmp->index < stack_pull->index && tmp->back->index > stack_pull->index)
+	{
+		tmp = tmp->back:
+		rr++;
+	}
+}
+
+void	quick_sort(t_main m_s)
+{
+	while(stack_length > 3)
+		rules(PB,m_s);
+	if (is_smallest(A)->next == is_biggest())
+	{
+		rules(SA,m_s);
+	}
+	if(A == is_biggest(a))
+	{
+		rules(RA,m_s);
+	}
+	else
+	{
+		rules(RRA,m_s)
+	}
+}
 void	sort_stack(t_main *m_s)
 {
-	int	index_top;
-	int	index_middle;
-	int	index_bottum;
-	t_stack *top_line;
-
-	top_line = NULL;
-	index_top = m_s->max / 3 * 2;
-	index_middle = m_s->max / 3 * 1;
-	index_bottum = m_s->max / 3 * 0;
-	
-	while (A != top_line)
-	{
-		if(A->index >= index_top)
-		{
-			if(top_line == NULL)
-			{
-				top_line = A;
-			rules(RRA,m_s);
-			}
-		}
-		else
-		{
-			rules(PB,m_s);
-			if(B_valid && A->index <=index_middle)
-				rules(RRB,m_s);
-		}
-	}
-	
+	if(m_s <= 5)
+	quick_sort(m_s);
 }
