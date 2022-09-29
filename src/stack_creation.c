@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:49:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/25 14:03:59 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/29 13:36:58 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,9 @@ t_stack	*stack_setup(int argv,char *argc[],t_main *m_s)
 			free(strings[i]);
 			i++;
 		}
-		if (m_s->max < 3)
-			my_error("Stacksize to small\n");
+		// print_stack(m_s->stack_a);
+		// if (m_s->max < 3)
+		// 	my_error("Stacksize to small\n");
 		free(strings);
 		p++;
 	}

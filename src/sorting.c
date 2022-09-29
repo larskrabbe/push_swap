@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:01:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/28 18:33:12 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/29 15:13:15 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,66 +84,121 @@
 # define B_valid B != NULL && B->next != B
 # define A_valid A != NULL && A->next != A
 
+t_stack *where_to_insert(t_stack *stack, t_stack *insert)
+{
+	t_stack	*tmp;
+
+	if (insert == NULL)
+		my_error("where_to_insert got NULL for insert");
+	if (stack == NULL)
+		return(NULL);
+	tmp = is_smallest(stack);
+	if (insert->index < tmp->index)
+		return(tmp);
+	tmp = is_biggest(stack);
+	if (insert->index > tmp->index)
+		return(tmp->next);
+	tmp = stack;
+	printf("target before %i",tmp->index);
+	while(tmp->next != stack)
+	{
+		printf("\nin loop \n top %i\nback %i\n",tmp->index,tmp->back->index);
+		if (insert->index < tmp->index && insert->index > tmp->back->index)
+			return(tmp);
+		tmp = tmp->next;
+	}
+	if (insert->index < tmp->index && insert->index > tmp->back->index)
+		return(tmp);
+	tmp = tmp->next;
+	if(!(insert->index > tmp->index && insert->index < tmp->back->index))
+		my_error("where_to_insert didnt find a place");
+	return(tmp);
+}
+
+
 /**
  * @brief 
- * 
+ * !needs to be sorted to work
  */
-int	r_or_rr(t_stack *stack_insert,t_stack *stack_pull)
+int	r_or_rr(t_stack *stack,t_stack *target)
 {
 	int r;
 	int rr;
 	t_stack *tmp;
 
-	tmp = stack_insert;
+	if (target == NULL)
+		my_error("r_or_rr got NULL for insert");
+	if (stack == NULL)
+		return(0);
 	r = 0;
 	rr = 0;
-	while(tmp->index < stack_pull->index && tmp->back->index > stack_pull->index )
+	tmp = stack;
+	while(tmp != target)
 	{
-		tmp = tmp->next;
 		r++;
+		tmp = tmp->next;
 	}
-	tmp = stack_insert;
-	while(tmp->index < stack_pull->index && tmp->back->index > stack_pull->index)
+	tmp = stack;
+	while(tmp != target)
 	{
-		tmp = tmp->back;
 		rr++;
+		tmp = tmp->back;
 	}
-	printf("r = %i rr = %i \n",r ,rr);
-	if(r >= rr)
+	if(r <= rr)
 		return(r);
 	else
 		return(rr * -1);
 }
+
+void	rotate_to_top(t_main *m_s)
+{
+	int	i;
+
+	i =  r_or_rr(m_s->stack_a,is_smallest(m_s->stack_a));
+	if (i < 0)
+	{
+		while( i < 0)
+		{
+			rules(RRA,m_s);
+			i++;
+		}
+	}
+	else
+	{
+		while( i > 0)
+		{
+			rules(RA,m_s);
+			i--;
+		}
+	}
+}	
 
 void	quick_sort(t_main *m_s)
 {
 	while(stack_length(A) > 3)
 		rules(PB,m_s);
 	if (is_smallest(A)->next == is_biggest(A))
-	{
 		rules(SA,m_s);
-	}
 	if (A != is_smallest(A))
 	{
 		if(A == is_biggest(A))
-		{
 			rules(RA,m_s);
-		}
 		else
-		{
 			rules(RRA,m_s);
-		}
 	}
 	while(B != NULL)
 	{
-		if(r_or_rr(A,B) == 0)
+		printf("r_or_rr = %i \n",r_or_rr(A,where_to_insert(A,B)));
+		if(r_or_rr(A,where_to_insert(A,B)) == 0)
 			rules(PA,m_s);
-		else if(r_or_rr(A,B) < 0)
+		else if(r_or_rr(A,where_to_insert(A,B)) < 0)
 			rules(RA,m_s);
 		else
 			rules(RRA,m_s);
 	}
+	rotate_to_top(m_s);
 }
+
 void	sort_stack(t_main *m_s)
 {
 	if(stack_length(A) <= 5)

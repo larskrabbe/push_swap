@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/28 18:22:40 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/09/29 13:04:31 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,15 @@ t_stack *is_smallest(t_stack *stack);
  */
 t_stack *is_biggest(t_stack *stack);
 
+/**
+ * @brief look for the position to insert the currrent struct inside of a stack
+ * 
+ * @param stack  stack to look for where insert would be placed
+ * @param insert struct that looks for a place
+ * 
+ * @return returns the posisiton that would be next after insert would be inserted
+ */
+t_stack *where_to_insert(t_stack *stack, t_stack *insert);
 
 /**
  * @brief returns the size of the stack.
