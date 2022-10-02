@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:25:26 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/29 14:41:41 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/01 17:09:29 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	rules(char *rule,t_main *m_s)
 	else
 		write(1,rule,3);
 	write(1,"\n",1);
-	print_stack((m_s->stack_a));
-	print_stack((m_s->stack_b));
-	write(1,"\n",1);
+	// print_stack((m_s->stack_a));
+	// print_stack((m_s->stack_b));
+	// write(1,"\n",1);
 }

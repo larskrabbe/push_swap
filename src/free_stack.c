@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   free_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:06:57 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/02 01:12:33 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/10/02 01:16:19 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../include/push_swap.h"
 
-int	main(int argv,char *argc[])
+void	free_stack(t_stack *stack)
 {
-	t_main m_s;
-	m_s.stack_a = NULL;
-	m_s.stack_b = NULL;
-	if (argv < 2)
-		my_error(" \nnot enough arguments");
-	m_s.stack_a = stack_setup(argv,argc,&m_s);
-	// print_stack(m_s.stack_a);
-	sort_stack(&m_s);
-	// print_stack(m_s.stack_a);
-	free_two_stacks(&m_s);
-	return(0);
+	while(stack != NULL)
+	{
+		free(pull(&stack));
+	}
+}
+
+void	free_two_stacks(t_main *m_s)
+{
+	free_stack(m_s->stack_a);
+	free_stack(m_s->stack_b);
 }

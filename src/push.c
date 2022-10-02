@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 18:12:20 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/25 13:54:06 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/02 01:15:07 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 	returns the structure with next and back equel to NULL
 */
-static t_stack	*pull(t_stack **stack)
+t_stack	*pull(t_stack **stack)
 {
 	t_stack *tmp;
 

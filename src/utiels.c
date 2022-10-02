@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utiels.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:31:33 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/25 13:51:04 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/02 01:13:46 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,8 @@ void print_struct_l_r(t_stack *stack)
 }
 void	my_error(char *message)
 {
-// 	if (message != NULL)
-// 		write(1,"Error Bitch\n",13);
-	printf("\n\033[1;31m%s\033[1;0m\n",message);
+	write(1,"Error :",8);
+	printf(" \033[1;31m%s\033[1;0m\n",message);
 	// he we need to free everthing
 	exit(0);
 }

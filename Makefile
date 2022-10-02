@@ -21,7 +21,8 @@ SRC = push_swap.c \
 		rotate.c\
 		rules.c\
 		sorting.c\
-		checkers.c
+		checkers.c\
+		free_stack.c
 
 OBJ = $(SRC:.c=.o) $(F_LIBFT_PLUS:.c=.o) 
 
@@ -50,7 +51,7 @@ fclean : clean
 #ARG = "954649438 -1184622453 204402658 -1061102961 1288341240"
 #ARG = "4 0 3 1 2"
 #455110993 164502198 154875247 1088263319 1969608996
-ARG = "4 2 1 0 3"
+ARG = "4 2 1 0 3 5 9 8 7 6 10 11 18 19 15 16 17 14 13 12"
 test:all
 		./push_swap $(ARG)
 		./push_swap $(ARG) | wc -l

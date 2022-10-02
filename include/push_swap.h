@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/29 13:04:31 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/02 01:15:00 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,3 +186,19 @@ t_stack *where_to_insert(t_stack *stack, t_stack *insert);
  * @return returns the length of the stack as a int
  */
 int stack_length(t_stack *stack);
+
+/**
+ * @brief "Pulls" the top structure form the stack and relinked the next and back pointer
+ * 
+ * @param stack stack tp pull from
+ * 
+ * @return returns the structure that was pulled
+ */
+t_stack	*pull(t_stack **stack);
+
+/**
+ * @brief frees every strucur in both stacks
+ * 
+ * @param m_s main structure that contains both stacks
+ */
+void	free_two_stacks(t_main *m_s);
