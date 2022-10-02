@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/02 01:15:00 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/02 15:46:24 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,3 +202,46 @@ t_stack	*pull(t_stack **stack);
  * @param m_s main structure that contains both stacks
  */
 void	free_two_stacks(t_main *m_s);
+
+/**
+ * @brief Sort small stacks pretty decent
+ * 
+ * @param m_s main structure that stores both stacks
+ */
+void	quick_sort(t_main *m_s);
+
+/**
+ * @brief rotates the targert struct to the top of the stack(A)
+ * 
+ * @param m_s main structure that stores both stacks
+ * @param target target that will be on top
+ */
+void	rotate_to_top_b(t_main *m_s,t_stack *target);
+
+/**
+ * @brief rotates the targert struct to the top of the stack(B)
+ * 
+ * @param m_s main structure that stores both stacks
+ * @param target target that will be on top
+ */
+void	rotate_to_top_a(t_main *m_s,t_stack *target);
+
+/**
+ * @brief looks up if it faster to rotate forward or backwards to reach the target inside of the stack
+ * 
+ * @param stack the stack that can be rotated
+ * @param target target inside of the stack
+ */
+int	r_or_rr(t_stack *stack,t_stack *target);
+
+/**
+ * @brief see what struct needs to be top to insert the target so that it will be in acending order. \n
+ *  it will only works if the stack is already in acsending order but the smalles doesnt have to on top
+ * @param stack the stack that will get inserted 
+ * @param insert the struct that would be inserted
+ * @return returns the struct that should be on top 
+ */
+t_stack *where_to_insert(t_stack *stack, t_stack *insert);
+t_stack *where_to_insert_reverse(t_stack *stack, t_stack *insert);
+
+void	chunk_sort(t_main *m_s);

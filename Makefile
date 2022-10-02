@@ -22,7 +22,9 @@ SRC = push_swap.c \
 		rules.c\
 		sorting.c\
 		checkers.c\
-		free_stack.c
+		free_stack.c\
+		chunksort.c\
+		quicksort.c
 
 OBJ = $(SRC:.c=.o) $(F_LIBFT_PLUS:.c=.o) 
 
