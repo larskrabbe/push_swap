@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:25:09 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/02 16:16:55 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/02 16:52:30 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ void	chunk_sort(t_main *m_s)
 {
 	int chunksize;// need to figure out chunksize later
 
-	chunksize  = 20;
+	if (m_s->max <= 100)
+		chunksize  = 20;
+	else
+		chunksize = 45;
 	while(A != NULL)
 	{
 		chunk_push(m_s,chunksize);
