@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:25:09 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/10 22:35:31 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:18:30 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,22 @@ void	chunk_push(t_both *top,int chunksize)
 	t_stack	*tmp;
 
 	chunk = 1;
-	while (B != NULL)
+	//ft_putnbr_fd(chunksize, 1);
+	while (top->stack_b != NULL)
 	{
-		tmp = next_chunk(top->stack_b,chunk,chunksize);
+		tmp = next_chunk(top->stack_b, chunk, chunksize);
 		if (tmp == NULL)
 			{
 				chunk++;
-				tmp = next_chunk(top->stack_b,chunk,chunksize);
+				tmp = next_chunk(top->stack_b, chunk, chunksize);
+
 			};
-		rotate_to_top_b(top,tmp);
+		//write(1,">>",2);
+		rotate_to_top_b(top, tmp);
 		tmp = where_to_insert(top->stack_a, tmp, top);
 		if(A != NULL)
-			rotate_to_top_a(top,tmp);
-		rules(PA,top);
+			rotate_to_top_a(top, tmp);
+		rules(PA, top);
 	}
 }
 
@@ -88,12 +91,27 @@ void	chunking(t_both *top)
 	}
 }
 
+int chunksize(int max)
+{
+	if(max > 5 && max <= 10)
+		return(3);
+	else if(max > 10 && max <= 50)
+		return(max / 3);
+	else if(max > 50 && max <= 100)
+		return(max / 10);
+	else if(max > 100 && max <= 500)
+		return(max / 15);
+	else
+		return(100);
+}
+
+
 void	chunk_sort(t_both *top)
 {
 	chunking(top);
 	chunking(top);
 	while (top->stack_a != NULL)
-		rules(PB,top);
-	chunk_push(top,top->max/15);
-	rotate_to_top_a(top,is_smallest(top->stack_a, top));
+		rules(PB ,top);
+	chunk_push(top, chunksize(top->max));
+	rotate_to_top_a(top, is_smallest(top->stack_a, top));
 }

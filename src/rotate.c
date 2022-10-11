@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:23:04 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/10 08:51:23 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:03:05 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	rotate_to_top_a(t_both *top, t_stack *target)
 
 	if (top->stack_a == NULL)
 		return;
+	if(target == NULL)
+		my_error("rotate_to_top_a got NULL for target", top);
 	i =  r_or_rr(top->stack_a, target, top);
 	if (i < 0)
 	{
@@ -93,6 +95,8 @@ void	rotate_to_top_b(t_both *top, t_stack *target)
 
 	if (top->stack_b == NULL)
 		return;
+	if(target == NULL)
+		my_error("rotate_to_top_b got NULL for target", top);
 	i =  r_or_rr(top->stack_b, target, top);
 	if (i < 0)
 	{

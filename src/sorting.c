@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:01:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/11 09:01:25 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/11 15:12:40 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ t_stack *where_to_insert_reverse(t_stack *stack, t_stack *insert, t_both *top)
 
 void	sort_stack(t_both *top)
 {
+	if(stack_length(A) == 1)
+		return;
 	if(stack_length(A) <= 5)
 		quick_sort(top);
 	else

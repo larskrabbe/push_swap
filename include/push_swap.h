@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/10 10:00:09 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:40:22 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,3 +249,10 @@ int	r_or_rr(t_stack *stack, t_stack *target, t_both *top);
 // t_stack *where_to_insert_reverse(t_stack *stack, t_stack *insert, t_both *top);
 
 void	chunk_sort(t_both *top);
+
+/**
+ * @brief check if it in acending order, not caring if it start at the smallest
+ * 
+ * 
+ */
+int is_small_big(t_stack *stack_a);

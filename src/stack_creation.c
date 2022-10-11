@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_creation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:49:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/11 09:00:42 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/11 14:09:49 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ static int	check_for_valid_number(char *str)
 	while (str[i] != '\0')
 	{
 		if (ft_isdigit(str[i]) != 1)
-			return(0);
+			return (0);
+		if (i >= 8)
+			if(ft_atoi(str) == 0 || ft_atoi(str) == -1)
+				return (0);
 		i++;
 	}
 	if (ft_isdigit(str[i - 1]) == 1)
@@ -107,6 +110,8 @@ static t_stack	*add_index(t_stack *stack,int stacksize , t_both *top)
 	int next_smallest;
 	t_stack *tmp;
 	
+	if (stack == NULL)
+		return(NULL);
 	tmp = stack;
 	smallest = is_smallest(stack, top)->value;
 	while (stacksize >= 0)
@@ -123,9 +128,9 @@ static t_stack	*add_index(t_stack *stack,int stacksize , t_both *top)
 
 t_stack	*stack_setup(int argv,char *argc[],t_both *top)
 {
-	int			i;
+	int		i;
 	char	**strings;
-	int			p;
+	int		p;
 
 	top->max = 0;
 	p = 1;
@@ -137,7 +142,7 @@ t_stack	*stack_setup(int argv,char *argc[],t_both *top)
 			my_error("ft_split failed", top);
 		while (strings[i] != NULL)
 		{
-			if(check_for_valid_number(strings[i]) != 1)
+			if (check_for_valid_number(strings[i]) != 1)
 				my_error("contains not allowed input", top);
 			add_stack(top, ft_atoi(strings[i]));
 			top->max++;
