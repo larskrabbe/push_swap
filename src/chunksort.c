@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:25:09 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/02 16:52:30 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/10 22:35:31 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,42 +37,63 @@ t_stack	*next_chunk(t_stack *stack,int chunk,int chunksize)
 }
 
 
-void	chunk_push(t_main *m_s,int chunksize)
+void	chunk_push(t_both *top,int chunksize)
 {
 	int		chunk;
 	t_stack	*tmp;
 
 	chunk = 1;
-	while (A != NULL)
+	while (B != NULL)
 	{
-		tmp = next_chunk(m_s->stack_a,chunk,chunksize);
+		tmp = next_chunk(top->stack_b,chunk,chunksize);
 		if (tmp == NULL)
 			{
 				chunk++;
-				tmp = next_chunk(m_s->stack_a,chunk,chunksize);
+				tmp = next_chunk(top->stack_b,chunk,chunksize);
 			};
-		rotate_to_top_a(m_s,tmp);
-		tmp = where_to_insert_reverse(m_s->stack_b,tmp);
-		if(B != NULL)
-			rotate_to_top_b(m_s,tmp);
-		rules(PB,m_s);
+		rotate_to_top_b(top,tmp);
+		tmp = where_to_insert(top->stack_a, tmp, top);
+		if(A != NULL)
+			rotate_to_top_a(top,tmp);
+		rules(PA,top);
 	}
-	
 }
 
-void	chunk_sort(t_main *m_s)
+void	chunking(t_both *top)
 {
-	int chunksize;// need to figure out chunksize later
+	int chunksize;
+	t_stack *tmp;
 
-	if (m_s->max <= 100)
-		chunksize  = 20;
-	else
-		chunksize = 45;
-	while(A != NULL)
+	tmp = NULL;
+	chunksize = is_biggest(top->stack_a, top)->index / 3;
+	while(top->stack_a)
 	{
-		chunk_push(m_s,chunksize);
+		if(top->stack_a->index >= chunksize * 2)
+			rules(PB,top);
+		else if(top->stack_a->index >= chunksize)
+		{
+			rules(PB,top);
+			if(top->stack_b !=  top->stack_b->next && top->stack_b != NULL)
+				rules(RB,top);
+		}
+		else if(top->stack_a == tmp )
+			break;
+		else
+		{
+			if (tmp == NULL)
+				tmp = top->stack_a;
+			if(top->stack_a !=  top->stack_a->next)
+				rules(RA,top);
+		}
 	}
-	while(B != NULL)
-		rules(PA,m_s);
-	rotate_to_top_a(m_s,is_smallest(m_s->stack_a));
+}
+
+void	chunk_sort(t_both *top)
+{
+	chunking(top);
+	chunking(top);
+	while (top->stack_a != NULL)
+		rules(PB,top);
+	chunk_push(top,top->max/15);
+	rotate_to_top_a(top,is_smallest(top->stack_a, top));
 }

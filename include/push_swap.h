@@ -3,18 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/02 15:46:24 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/10 10:00:09 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
+# define A top->stack_a
+# define B top->stack_b
 
-# define A m_s->stack_a
-# define B m_s->stack_b
+//rules
+# define SA "sa"	
+# define SB "sb"
+# define SS "ss"
+# define PA "pa"
+# define PB "pb"
+# define RA "ra"
+# define RB "rb"
+# define RR "rr"
+# define RRA "rra"
+# define RRB "rrb"
+# define RRR "rrr"
+
+# ifndef BETTERERROR
+#  define BETTERERROR 0
+# endif
 
 /*
 	struct to store value and the relativ position in the doppelt linked list
@@ -38,32 +54,20 @@ typedef struct s_stack
 	t_stack **stack_a -> top position of stack a
 	t_stack **stack_b -> top position of stack b
 */
-typedef struct s_main
-
-#define SA "sa"	
-#define SB "sb"
-#define SS "ss"
-#define PA "pa"
-#define PB "pb"
-#define RA "ra"
-#define RB "rb"
-#define RR "rr"
-#define RRA "rra"
-#define RRB "rrb"
-#define RRR "rrr"
+typedef struct s_both
 
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		max;
-}t_main;
+}t_both;
 
 /*
 	Prints simple error message in red before exiting the porcess
 	
 	char *message -> error message that will be printed
 */
-void my_error(char *message);
+void my_error(char *message, t_both *top);
 
 /*
 	prints a stack in one line with spacec between it
@@ -85,7 +89,7 @@ void	print_stack_reverse(t_stack *stack);
 	char *argc-> the string of number in the arguments
 	t_stack *stack ->  the pointer to the stack to store everthing 
 */
-t_stack	*stack_setup(int argv,char *argc[],t_main *m_s);
+t_stack	*stack_setup(int argv,char *argc[],t_both *top);
 
 /*
 	Swap the first 2 elements at the top of stack a
@@ -94,14 +98,14 @@ t_stack	*stack_setup(int argv,char *argc[],t_main *m_s);
 	t_stack *stack -> the current top position of the stack
 	returns the new top position of the stack
 */
-t_stack *swap(t_stack *stack);
+t_stack *swap(t_stack *stack, t_both *top);
 
 /*
 	swaps stack_a and stack_b at the same time.
 
-	t_main m_s mian struct that stores both stacks
+	t_both top mian struct that stores both stacks
 */
-void	swap_both(t_main *m_s);
+void	swap_both(t_both *top);
 
 /*
 	prints the address and values of the structe and the structur that are conected with next and back
@@ -118,7 +122,7 @@ void print_struct_l_r(t_stack *stack);
 	t_stack stack -> top position of the stack
 	returns -> returns the updated TOP position of the stack
 */
-t_stack	*rotate(t_stack **stack);
+t_stack	*rotate(t_stack **stack, t_both *top);
 
 /*
 	rotate the stack in direction of back/backwards
@@ -127,7 +131,7 @@ t_stack	*rotate(t_stack **stack);
 
 	returns -> returns the updated TOP position of the stack
 */
-t_stack	*reverse_rotate(t_stack **stack);
+t_stack	*reverse_rotate(t_stack **stack, t_both *top);
 
 /**
  * @brief push the top struct of stack_pull on the top position of stack_insert
@@ -135,22 +139,22 @@ t_stack	*reverse_rotate(t_stack **stack);
  * @param stack_insert stack to insert in
  * @param stack_pull stack to pull from
  */
-void	push(t_stack **stack_insert,t_stack **stack_pull);
+void	push(t_stack **stack_insert, t_stack **stack_pull, t_both *top);
 
 /*
 	Choose the currect funktion to change the stacks depending on the rules 
 
 	char *rule -> string to determen the select rule
-	t_main *m_s -> main struct that contains the stacks 
+	t_both *top -> main struct that contains the stacks 
 */
-void	rules(char *rule,t_main *m_s);
+void	rules(char *rule, t_both *top);
 
 /*
 	main funktion for the sorting part
 
 
 */
-void	sort_stack(t_main *a_s);
+void	sort_stack(t_both *top);
 
 /**
  * @brief search in a stack for a member with a specific value
@@ -158,16 +162,16 @@ void	sort_stack(t_main *a_s);
  * @param t_stack * stack -> target stack for looking for the value
  * @param int value -> value to look for
  */
-t_stack	*look_for_value(t_stack *stack,int value);
+t_stack	*look_for_value(t_stack *stack, int value);
 
 void	print_stack_index(t_stack *stack);
 
-t_stack *is_smallest(t_stack *stack);
+t_stack *is_smallest(t_stack *stack, t_both *top);
 /**
  * @brief 
  * 
  */
-t_stack *is_biggest(t_stack *stack);
+t_stack *is_biggest(t_stack *stack, t_both *top);
 
 /**
  * @brief look for the position to insert the currrent struct inside of a stack
@@ -177,7 +181,7 @@ t_stack *is_biggest(t_stack *stack);
  * 
  * @return returns the posisiton that would be next after insert would be inserted
  */
-t_stack *where_to_insert(t_stack *stack, t_stack *insert);
+t_stack *where_to_insert(t_stack *stack, t_stack *insert, t_both *top);
 
 /**
  * @brief returns the size of the stack.
@@ -194,37 +198,37 @@ int stack_length(t_stack *stack);
  * 
  * @return returns the structure that was pulled
  */
-t_stack	*pull(t_stack **stack);
+t_stack	*pull(t_stack **stack, t_both *top);
 
 /**
  * @brief frees every strucur in both stacks
  * 
- * @param m_s main structure that contains both stacks
+ * @param top main structure that contains both stacks
  */
-void	free_two_stacks(t_main *m_s);
+void	free_two_stacks(t_both *top);
 
 /**
  * @brief Sort small stacks pretty decent
  * 
- * @param m_s main structure that stores both stacks
+ * @param top main structure that stores both stacks
  */
-void	quick_sort(t_main *m_s);
+void	quick_sort(t_both *top);
 
 /**
  * @brief rotates the targert struct to the top of the stack(A)
  * 
- * @param m_s main structure that stores both stacks
+ * @param top main structure that stores both stacks
  * @param target target that will be on top
  */
-void	rotate_to_top_b(t_main *m_s,t_stack *target);
+void	rotate_to_top_b(t_both *top, t_stack *target);
 
 /**
  * @brief rotates the targert struct to the top of the stack(B)
  * 
- * @param m_s main structure that stores both stacks
+ * @param top main structure that stores both stacks
  * @param target target that will be on top
  */
-void	rotate_to_top_a(t_main *m_s,t_stack *target);
+void	rotate_to_top_a(t_both *top, t_stack *target);
 
 /**
  * @brief looks up if it faster to rotate forward or backwards to reach the target inside of the stack
@@ -232,7 +236,7 @@ void	rotate_to_top_a(t_main *m_s,t_stack *target);
  * @param stack the stack that can be rotated
  * @param target target inside of the stack
  */
-int	r_or_rr(t_stack *stack,t_stack *target);
+int	r_or_rr(t_stack *stack, t_stack *target, t_both *top);
 
 /**
  * @brief see what struct needs to be top to insert the target so that it will be in acending order. \n
@@ -241,7 +245,7 @@ int	r_or_rr(t_stack *stack,t_stack *target);
  * @param insert the struct that would be inserted
  * @return returns the struct that should be on top 
  */
-t_stack *where_to_insert(t_stack *stack, t_stack *insert);
-t_stack *where_to_insert_reverse(t_stack *stack, t_stack *insert);
+// t_stack *where_to_insert(t_stack *stack, t_stack *insert, t_both *top);
+// t_stack *where_to_insert_reverse(t_stack *stack, t_stack *insert, t_both *top);
 
-void	chunk_sort(t_main *m_s);
+void	chunk_sort(t_both *top);

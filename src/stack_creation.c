@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_creation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:49:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/29 13:36:58 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/11 09:00:42 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,26 @@
 	
 	return -> returns the top position of the stack
 */
-static t_stack	*add_stack(t_stack *stack, int value)
+static void	add_stack(t_both *top, int value)
 {
 	t_stack *tmp;
-
-	if(stack != NULL && look_for_value(stack, value) != NULL)
-				my_error("value already exist");
+	
+	if(top->stack_a != NULL && look_for_value(top->stack_a, value) != NULL)
+				my_error("value already exist", top);
 	tmp = ft_calloc(1,sizeof(t_stack));
 	if (tmp == NULL)
-		my_error("allocation failed in f create_new_stack");
-	if (stack == NULL)
-		stack = tmp;
+		my_error("allocation failed in f create_new_stack", top);
+	if (top->stack_a == NULL)
+		top->stack_a = tmp;
 	else
 	{	
-		tmp->back = stack->back;
-		stack->back->next = tmp;
+		tmp->back = top->stack_a->back;
+		top->stack_a->back->next = tmp;
 	}
-	stack->back = tmp;
-	tmp->next = stack;
+	top->stack_a->back = tmp;
+	tmp->next = top->stack_a;
 	tmp->value = value;
 	tmp->index = 0;
-	return(stack);
 }
 
 /*
@@ -102,54 +101,51 @@ static t_stack	*index_pp(t_stack *stack,int *next_smallest,int *smallest)
 
 	return -> returns the top position of the stack
 */
-static t_stack	*add_index(t_stack *stack,int stacksize)
+static t_stack	*add_index(t_stack *stack,int stacksize , t_both *top)
 {
 	int smallest;
 	int next_smallest;
 	t_stack *tmp;
 	
 	tmp = stack;
-	smallest = is_smallest(stack)->value;
+	smallest = is_smallest(stack, top)->value;
 	while (stacksize >= 0)
 	{
-		next_smallest = is_biggest(stack)->value;
+		next_smallest = is_biggest(stack, top)->value;
 		while(tmp->next != stack)
 			tmp = index_pp(tmp,&next_smallest,&smallest);;
-		tmp = index_pp(tmp,&next_smallest,&smallest);;
+		tmp = index_pp(tmp, &next_smallest, &smallest);;
 		smallest = next_smallest;
 		stacksize--;
 	}
 	return(stack);
 }
 
-t_stack	*stack_setup(int argv,char *argc[],t_main *m_s)
+t_stack	*stack_setup(int argv,char *argc[],t_both *top)
 {
 	int			i;
 	char	**strings;
 	int			p;
 
-	m_s->max = 0;
+	top->max = 0;
 	p = 1;
 	while(p < argv)
 	{
 		i = 0;
 		strings = ft_split(argc[p], ' ');
 		if(strings == NULL && strings[0] == NULL)
-			my_error("ft_split failed");
+			my_error("ft_split failed", top);
 		while (strings[i] != NULL)
 		{
 			if(check_for_valid_number(strings[i]) != 1)
-				my_error("contains not allowed input");
-			m_s->stack_a = add_stack(m_s->stack_a,ft_atoi(strings[i]));
-			m_s->max++;
+				my_error("contains not allowed input", top);
+			add_stack(top, ft_atoi(strings[i]));
+			top->max++;
 			free(strings[i]);
 			i++;
 		}
-		// print_stack(m_s->stack_a);
-		// if (m_s->max < 3)
-		// 	my_error("Stacksize to small\n");
 		free(strings);
 		p++;
 	}
-	return(add_index(m_s->stack_a,m_s->max));
+	return(add_index(top->stack_a, top->max, top));
 }

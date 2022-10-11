@@ -6,7 +6,7 @@
 /*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:31:33 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/02 01:13:46 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/10 08:46:44 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,14 @@ void print_struct_l_r(t_stack *stack)
 			printf("next   |\033[1;31m%p\033[1;0m \033[1;35m%p\033[1;0m %p\n",(void *)stack->back->next,(void *)stack->next,(void *)stack->next->next);
 			printf("back   |%p \033[1;32m%p\033[1;0m \033[1;31m%p\033[1;0m\n",(void *)stack->back->back,(void *)stack->back,(void *)stack->next->back);
 }
-void	my_error(char *message)
+void	my_error(char *message,t_both *top)
 {
-	write(1,"Error :",8);
-	printf(" \033[1;31m%s\033[1;0m\n",message);
+	if( top != NULL)
+		free_two_stacks(top);
+	if (BETTERERROR == 0)
+		 write(2, "Error\n", 6);
+	else
+		printf(" \033[1;31m Error : %s\033[1;0m\n",message);
 	// he we need to free everthing
 	exit(0);
 }

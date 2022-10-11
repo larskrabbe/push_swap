@@ -6,7 +6,7 @@
 /*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 13:02:44 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/09/26 16:10:08 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/10 08:58:23 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ t_stack	*look_for_value(t_stack *stack,int value)
 		return(NULL);
 }
 
-t_stack *is_smallest(t_stack *stack)
+t_stack *is_smallest(t_stack *stack, t_both *top)
 {
 	t_stack	*tmp;
 	t_stack	*smallest;
 
 	if (stack == NULL)
-		my_error("EMPTY STACK in is_smallest function");
+		my_error("EMPTY STACK in is_smallest function", top);
 	smallest = stack;
 	tmp = stack;
 	while (tmp->next != stack)
@@ -50,13 +50,13 @@ t_stack *is_smallest(t_stack *stack)
 	return(smallest);
 }
 
-t_stack *is_biggest(t_stack *stack)
+t_stack *is_biggest(t_stack *stack, t_both *top)
 {
 	t_stack	*tmp;
 	t_stack	*biggest;
 	
 	if (stack == NULL)
-		my_error("EMPTY STACK in is_biggest function");
+		my_error("EMPTY STACK in is_biggest function", top);
 	biggest = stack;
 	tmp = stack;
 	while (tmp->next != stack)
