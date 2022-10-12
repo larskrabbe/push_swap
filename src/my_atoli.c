@@ -7,7 +7,7 @@ long int	my_atoli(const char *str)
 
 	sign = 1;
 	num = 0;
-	while (is_white_space(str))
+	while (is_white_space(*str))
 		str++;
 	if (*str == '+' || *str == '-')
 	{
@@ -21,9 +21,9 @@ long int	my_atoli(const char *str)
 		num = num + (*str - '0');
 		str++;
 		if ((sign * num) > 4294967295)
-			return (-1);
+			return (4294967295);
 		if ((sign * num) < -4294967295)
-			return (0);
+			return (-4294967295);
 	}
 	return (sign * num);
 }

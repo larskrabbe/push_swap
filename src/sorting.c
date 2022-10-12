@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:01:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/11 15:12:40 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/12 11:19:43 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,32 @@ t_stack *where_to_insert_reverse(t_stack *stack, t_stack *insert, t_both *top)
 	return(NULL);
 }
 
+
+static int	is_sorted(t_both *top)
+{
+	t_stack *tmp;
+
+	tmp = top->stack_a;
+	while (tmp->next != top->stack_a)
+	{
+		if (tmp->index < tmp->next->index)
+			tmp = tmp->next;
+		else
+			return (0);
+	}
+	if (tmp->index > top->stack_a->index)
+		return (1);
+	else
+		return (0);
+}
+
 void	sort_stack(t_both *top)
 {
 	if(stack_length(A) == 1)
 		return;
+	if(is_sorted(top))
+		return;
+	//print_stack_index(top->stack_a);
 	if(stack_length(A) <= 5)
 		quick_sort(top);
 	else

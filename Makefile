@@ -5,7 +5,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Werror -Wextra -Wall -D BETTERERROR=1 #-fsanitize=address -static-libsan
+CFLAGS = -Werror -Wextra -Wall # -D BETTERERROR=1 #-fsanitize=address -static-libsan
 
 LIBFT_FLAGS = -Llib -lft
 
@@ -24,7 +24,9 @@ SRC = push_swap.c \
 		checkers.c\
 		free_stack.c\
 		chunksort.c\
-		quicksort.c
+		quicksort.c\
+		my_atoli.c\
+		is_white_space.c
 
 OBJ = $(SRC:.c=.o) $(F_LIBFT_PLUS:.c=.o) 
 
@@ -53,13 +55,13 @@ fclean : clean
 #ARG = "954649438 -1184622453 204402658 -1061102961 1288341240"
 #ARG = "4 0 3 1 2"
 #455110993 164502198 154875247 1088263319 1969608996
-ARG = "-2147483649"
+ARG = "-2147483648 -2147483647 2147483647"
 test:all
 		./push_swap $(ARG)
 		./push_swap $(ARG) | wc -l
 		./push_swap $(ARG) | ./checker_MAC $(ARG)
 testb:all
-				./push_swap  "-2147483649"
+				./push_swap  "0 1 2 3 4 5 6 7 8 9"
 re : fclean all
 
 .phony: all re clean fclean 
