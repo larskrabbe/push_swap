@@ -5,7 +5,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Werror -Wextra -Wall # -D BETTERERROR=1 #-fsanitize=address -static-libsan
+CFLAGS = -Werror -Wextra -Wall -D BETTERERROR=1 #-fsanitize=address -static-libsan
 
 LIBFT_FLAGS = -Llib -lft
 
@@ -53,7 +53,7 @@ fclean : clean
 #ARG = "954649438 -1184622453 204402658 -1061102961 1288341240"
 #ARG = "4 0 3 1 2"
 #455110993 164502198 154875247 1088263319 1969608996
-ARG = "2 1 3 6 5 8 "
+ARG = "-2147483649"
 test:all
 		./push_swap $(ARG)
 		./push_swap $(ARG) | wc -l

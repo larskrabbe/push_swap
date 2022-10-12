@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:15:42 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/11 13:40:22 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/11 16:44:03 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,3 +256,16 @@ void	chunk_sort(t_both *top);
  * 
  */
 int is_small_big(t_stack *stack_a);
+
+/**
+ * @brief check if the char is a equel to one of the whitespace charackter
+ * 
+ */
+int	is_white_space(int a);
+
+
+/**
+ * @brief ft_atoi that returns a long int instead
+ * 
+ */
+long int	my_atoli(const char *str);

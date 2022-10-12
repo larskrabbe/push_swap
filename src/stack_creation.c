@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_creation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:49:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/11 14:09:49 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/11 16:43:15 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ t_stack	*stack_setup(int argv,char *argc[],t_both *top)
 	int		i;
 	char	**strings;
 	int		p;
+	int		num;
 
 	top->max = 0;
 	p = 1;
@@ -142,8 +143,9 @@ t_stack	*stack_setup(int argv,char *argc[],t_both *top)
 			my_error("ft_split failed", top);
 		while (strings[i] != NULL)
 		{
-			if (check_for_valid_number(strings[i]) != 1)
+			if (check_for_valid_number(strings[i]) != 1 || ft_strlen(strings[i]) >= 10)
 				my_error("contains not allowed input", top);
+			num = my
 			add_stack(top, ft_atoi(strings[i]));
 			top->max++;
 			free(strings[i]);
