@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:49:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/12 11:01:22 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/12 11:44:59 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,19 @@ static t_stack	*add_index(t_stack *stack,int stacksize , t_both *top)
 	return(stack);
 }
 
+void free_strings(char **strings)
+{
+	int	i;
+
+	i = 0;
+	while (strings[i] != NULL)
+	{
+		free(strings[i]);
+		i++;
+	}
+	free(strings);
+}
+
 t_stack	*stack_setup(int argv,char *argc[],t_both *top)
 {
 	int		i;
@@ -144,10 +157,16 @@ t_stack	*stack_setup(int argv,char *argc[],t_both *top)
 		while (strings[i] != NULL)
 		{
 			if (check_for_valid_number(strings[i]) != 1)
+			{
+				free_strings(strings);
 				my_error("contains not allowed input", top);
+			}
 			num = my_atoli(strings[i]);
 			if (num > INT32_MAX || num < -INT32_MAX -1)
+			{
+				free_strings(strings);
 				my_error("number is outside range ", top);
+			}
 			add_stack(top, num);
 			top->max++;
 			free(strings[i]);

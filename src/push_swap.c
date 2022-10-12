@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:06:57 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/11 15:11:33 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/12 11:34:23 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ int	main(int argv,char *argc[])
 	if(!(is_small_big(top.stack_a) == 0 && is_smallest(top.stack_a, &top)))
 		sort_stack(&top);
 	free_two_stacks(&top);
+	while(1)
+	{
+		
+	}
 	return (0);
 }

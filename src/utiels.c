@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utiels.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:31:33 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/10 08:46:44 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/12 11:41:31 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ void	my_error(char *message,t_both *top)
 		 write(2, "Error\n", 6);
 	else
 		printf(" \033[1;31m Error : %s\033[1;0m\n",message);
-	// he we need to free everthing
+	while(1)
+	{
+		
+	}
 	exit(0);
 }
