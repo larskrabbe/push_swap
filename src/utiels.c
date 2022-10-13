@@ -6,7 +6,7 @@
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:31:33 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/12 11:41:31 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/13 16:08:39 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,84 +14,76 @@
 
 void	print_stack(t_stack *stack)
 {
-	t_stack *tmp;
-	int 	i = 0;
+	t_stack	*tmp;
+	int		i;
+
+	i = 0;
 	if (stack == NULL)
 	{
 		printf("Empty stack\n");
-		return;
+		return ;
 	}
 	tmp = stack;
-		printf("%i ",tmp->value);
-	while(tmp->next != stack )
-		{
-			tmp = tmp->next;
-			printf("%i ",tmp->value);
-			i++;
-		}
+	printf("%i ", tmp->value);
+	while (tmp->next != stack)
+	{
+		tmp = tmp->next;
+		printf("%i ", tmp->value);
+		i++;
+	}
 	printf("\n");
 }
 
 void	print_stack_index(t_stack *stack)
 {
-	t_stack *tmp;
-	int 	i = 0;
+	t_stack	*tmp;
+	int		i;
+
+	i = 0;
 	if (stack == NULL)
 	{
-		printf("Empty stack\n");
-		return;
+		ft_printf("Empty stack\n");
+		return ;
 	}
 	tmp = stack;
-		printf("%i ",tmp->index);
-	while(tmp->next != stack )
-		{
-			tmp = tmp->next;
-			printf("%i ",tmp->index);
-			i++;
-		}
-	printf("\n");
+	ft_printf("%i ", tmp->index);
+	while (tmp->next != stack)
+	{
+		tmp = tmp->next;
+		ft_printf("%i ", tmp->index);
+		i++;
+	}
+	ft_printf("\n");
 }
 
 void	print_stack_reverse(t_stack *stack)
 {
-	t_stack *tmp;
-	int 	i = 0;
+	t_stack	*tmp;
+	int		i;
 
+	i = 0;
 	if (stack == NULL)
 	{
-		printf("Empty stack\n");
-		return;
+		ft_printf("Empty stack\n");
+		return ;
 	}
 	tmp = stack;
-		printf("%i ",tmp->value);
-	while(tmp->back != stack )
-		{
-			tmp = tmp->back;
-			printf("%i ",tmp->value);
-			i++;
-		}
+	ft_printf("%i ", tmp->value);
+	while (tmp->back != stack)
+	{
+		tmp = tmp->back;
+		ft_printf("%i ", tmp->value);
+		i++;
+	}
 	printf("\n");
 }
 
-void print_struct_l_r(t_stack *stack)
+void	my_error(char *message, t_both *top)
 {
-			printf("	    back     <->   current  <->    next	\n");
-			printf("value  |%6i     %10i     %10i\n",stack->back->value,stack->value,stack->next->value);
-			printf("adress |\033[1;32m%p\033[1;0m \033[1;31m%p\033[1;0m \033[1;35m%p\033[1;0m\n",(void *)stack->back,(void *)stack,(void *)stack->next);
-			printf("next   |\033[1;31m%p\033[1;0m \033[1;35m%p\033[1;0m %p\n",(void *)stack->back->next,(void *)stack->next,(void *)stack->next->next);
-			printf("back   |%p \033[1;32m%p\033[1;0m \033[1;31m%p\033[1;0m\n",(void *)stack->back->back,(void *)stack->back,(void *)stack->next->back);
-}
-void	my_error(char *message,t_both *top)
-{
-	if( top != NULL)
-		free_two_stacks(top);
+	free_two_stacks(top);
 	if (BETTERERROR == 0)
-		 write(2, "Error\n", 6);
+		write(2, "Error\n", 6);
 	else
-		printf(" \033[1;31m Error : %s\033[1;0m\n",message);
-	while(1)
-	{
-		
-	}
+		ft_printf(" \033[1;31m Error : %s\033[1;0m\n", message);
 	exit(0);
 }

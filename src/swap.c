@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:56:23 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/10 08:38:51 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/13 16:05:28 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../include/push_swap.h"
 
-t_stack *swap(t_stack *stack, t_both *top)
+t_stack	*swap(t_stack *stack, t_both *top)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (stack == NULL)
 		my_error("trying to swap a stack with ZERO structs", top);
@@ -27,7 +27,7 @@ t_stack *swap(t_stack *stack, t_both *top)
 	tmp->back = stack->back;
 	stack->back->next = tmp;
 	stack->back = tmp;
-	return(tmp);
+	return (tmp);
 }
 
 void	swap_both(t_both *top)
@@ -35,4 +35,3 @@ void	swap_both(t_both *top)
 	top->stack_a = swap(top->stack_a, top);
 	top->stack_b = swap(top->stack_b, top);
 }
-

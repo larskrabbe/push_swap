@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_atoli.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/13 15:10:45 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/10/13 15:10:45 by lkrabbe          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include	"../include/push_swap.h"
 
-long int	my_atoli(const char *str)
+long long int	my_atoli(const char *str)
 {
 	long long int	num;
 	int				sign;

@@ -3,18 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   free_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/10 10:02:19 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/13 16:10:54 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../include/push_swap.h"
 
+void	free_strings(char **strings)
+{
+	int	i;
+
+	i = 0;
+	while (strings[i] != NULL)
+	{
+		free(strings[i]);
+		i++;
+	}
+	free(strings);
+}
+
 void	free_stack(t_stack *stack, t_both *top)
 {
-	while(stack != NULL)
+	while (stack != NULL)
 	{
 		free(pull(&stack, top));
 	}

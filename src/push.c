@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 18:12:20 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/10 08:47:12 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/13 16:10:40 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 */
 t_stack	*pull(t_stack **stack, t_both *top)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (*stack == NULL)
 	{
@@ -38,10 +38,10 @@ t_stack	*pull(t_stack **stack, t_both *top)
 	}
 	tmp->back = NULL;
 	tmp->next = NULL;
-	return(tmp);
+	return (tmp);
 }
 
-static t_stack	*insert(t_stack *stack, t_stack *new ,t_both *top)
+static t_stack	*insert(t_stack *stack, t_stack *new, t_both *top)
 {
 	if (new == NULL)
 	{
@@ -57,16 +57,16 @@ static t_stack	*insert(t_stack *stack, t_stack *new ,t_both *top)
 	{
 		new->next = stack;
 		new->back = stack->back;
-		stack->back->next = new; 
+		stack->back->next = new;
 		stack->back = new;
 		stack = new;
 	}
-	return(stack);
+	return (stack);
 }
 
-void	push(t_stack **stack_insert,t_stack **stack_pull, t_both *top)
+void	push(t_stack **stack_insert, t_stack **stack_pull, t_both *top)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = pull(stack_pull, top);
 	*stack_insert = insert(*stack_insert, tmp, top);
