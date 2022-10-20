@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/04/13 11:34:35 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/08/22 19:03:16 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
+#include	"../libft.h"
 
-void	free_strings(char **strings)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	int	i;
+	t_list	*tmp_lst;
+	t_list	*lst_nxt;
 
-	i = 0;
-	while (strings[i] != NULL)
+	tmp_lst = *lst;
+	while (tmp_lst != NULL)
 	{
-		free(strings[i]);
-		i++;
+		lst_nxt = tmp_lst->next;
+		ft_lstdelone(tmp_lst, del);
+		tmp_lst = lst_nxt;
 	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
-	{
-		free(pull(&stack, top));
-	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	*lst = NULL;
 }

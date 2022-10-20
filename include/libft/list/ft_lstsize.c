@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/04/12 17:32:15 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/08/22 19:03:37 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
+#include	"../libft.h"
 
-void	free_strings(char **strings)
+int	ft_lstsize(t_list *lst)
 {
-	int	i;
+	t_list	*tmp;
+	int		len;
 
-	i = 0;
-	while (strings[i] != NULL)
+	len = 0;
+	tmp = lst;
+	while (tmp != NULL)
 	{
-		free(strings[i]);
-		i++;
+		len++;
+		tmp = tmp->next;
 	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
-	{
-		free(pull(&stack, top));
-	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	return (len);
 }

@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   my_atoli.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/10/13 15:10:45 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/10/13 15:10:45 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../include/push_swap.h"
 
-void	free_strings(char **strings)
+long long int	my_atoli(const char *str)
 {
-	int	i;
+	long long int	num;
+	int				sign;
 
-	i = 0;
-	while (strings[i] != NULL)
+	sign = 1;
+	num = 0;
+	while (is_white_space(*str))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		free(strings[i]);
-		i++;
+		if (*str == '-')
+			sign = sign * -1;
+		str++;
 	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
+	while (*str >= '0' && *str <= '9')
 	{
-		free(pull(&stack, top));
+		num = num * 10;
+		num = num + (*str - '0');
+		str++;
+		if ((sign * num) > 4294967295)
+			return (4294967295);
+		if ((sign * num) < -4294967295)
+			return (-4294967295);
 	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	return (sign * num);
 }

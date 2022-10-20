@@ -1,40 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/03/26 13:41:39 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/03/26 14:06:45 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
-
-void	free_strings(char **strings)
+int	ft_toupper(int letter)
 {
-	int	i;
-
-	i = 0;
-	while (strings[i] != NULL)
-	{
-		free(strings[i]);
-		i++;
-	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
-	{
-		free(pull(&stack, top));
-	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	if (letter <= 'z' && letter >= 'a')
+		letter = letter - 32;
+	return (letter);
 }

@@ -1,40 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/03/30 13:00:37 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/09/23 19:09:30 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
-
-void	free_strings(char **strings)
+int	ft_isalpha(int a)
 {
-	int	i;
-
-	i = 0;
-	while (strings[i] != NULL)
-	{
-		free(strings[i]);
-		i++;
-	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
-	{
-		free(pull(&stack, top));
-	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
-}
+	if ((a >= 'a' && a <= 'z' ) || (a >= 'A' && a <= 'Z'))
+		return (1);
+	else
+		return (0);
+}	

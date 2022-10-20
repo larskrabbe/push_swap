@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/03/30 13:51:57 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/08/22 19:04:01 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
+#include	"../libft.h"
 
-void	free_strings(char **strings)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	i;
+	int		count;
+	char	*ptr;
 
-	i = 0;
-	while (strings[i] != NULL)
+	ptr = (char *)s;
+	count = 0;
+	while (n > 0)
 	{
-		free(strings[i]);
-		i++;
+		ptr[count] = c;
+		count++;
+		n--;
 	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
-	{
-		free(pull(&stack, top));
-	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	return (s);
 }

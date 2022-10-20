@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/03/27 15:36:17 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/04/01 14:06:54 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
-
-void	free_strings(char **strings)
+int	ft_strncmp( const char *str1, const char *str2, int n )
 {
 	int	i;
 
 	i = 0;
-	while (strings[i] != NULL)
+	if (n == 0)
+		return (0);
+	while (str1[i] == str2[i] && str1[i] != '\0' && str2[i] != '\0')
 	{
-		free(strings[i]);
+		if ((n - 1) == i)
+			return (0);
 		i++;
 	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
-	{
-		free(pull(&stack, top));
-	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	return ((unsigned char)str1[i] - (unsigned char)str2 [i]);
 }

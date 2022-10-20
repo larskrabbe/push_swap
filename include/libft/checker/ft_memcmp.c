@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/03/28 15:34:07 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/08/22 19:02:05 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
+#include	"../libft.h"
 
-void	free_strings(char **strings)
+int	ft_memcmp( const void *ptr1, const void *ptr2, size_t len)
 {
-	int	i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	i = 0;
-	while (strings[i] != NULL)
+	str1 = (unsigned char *)ptr1;
+	str2 = (unsigned char *)ptr2;
+	while (len && *str1 == *str2)
 	{
-		free(strings[i]);
-		i++;
+		len--;
+		str1++;
+		str2++;
 	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
-	{
-		free(pull(&stack, top));
-	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	if (len == 0)
+		return (0);
+	return (*str1 - *str2);
 }

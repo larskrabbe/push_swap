@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/03/26 14:10:13 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/08/22 19:02:08 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
+#include	"../libft.h"
 
-void	free_strings(char **strings)
-{
-	int	i;
+char	*ft_strchr(const char *string, int letter)
+{	
+	unsigned char	*str;
+	unsigned char	c;
 
-	i = 0;
-	while (strings[i] != NULL)
-	{
-		free(strings[i]);
-		i++;
-	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
-	{
-		free(pull(&stack, top));
-	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	str = (unsigned char *)string;
+	c = (unsigned char) letter;
+	while (*str != '\0' && *str != c)
+		str++;
+	if (c != *str)
+		return (NULL);
+	return ((char *)str);
 }

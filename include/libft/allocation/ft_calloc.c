@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/03/29 10:22:39 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/08/27 17:35:23 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
+#include	"../libft.h"
 
-void	free_strings(char **strings)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int	i;
+	void	*ptr;
 
-	i = 0;
-	while (strings[i] != NULL)
+	if (count == 0 || size == 0)
+		return (ft_strdup(""));
+	if (18446744073709551615UL / size < count)
+		return (NULL);
+	ptr = malloc(size * count);
+	if (ptr == NULL)
 	{
-		free(strings[i]);
-		i++;
+		return (NULL);
 	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
-	{
-		free(pull(&stack, top));
-	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	ft_bzero(ptr, (size * count));
+	return (ptr);
 }

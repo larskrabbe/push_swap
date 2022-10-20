@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/20 18:23:32 by lkrabbe          ###   ########.fr       */
+/*   Created: 2022/03/30 14:09:17 by lkrabbe           #+#    #+#             */
+/*   Updated: 2022/08/22 19:04:19 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../include/push_swap.h"
+#include	"../libft.h"
 
-void	free_strings(char **strings)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	i;
+	size_t	j;
+	size_t	i;
 
 	i = 0;
-	while (strings[i] != NULL)
-	{
-		free(strings[i]);
+	j = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (dst[i] && size > i)
 		i++;
-	}
-	free(strings);
-}
-
-void	free_stack(t_stack *stack, t_both *top)
-{
-	while (stack != NULL)
+	if (i == size)
+		return (i + ft_strlen(src));
+	while (src[j] != '\0' && (size - 1) > j + i)
 	{
-		free(pull(&stack, top));
+		dst[j + i] = src[j];
+		j++;
 	}
-}
-
-void	free_two_stacks(t_both *top)
-{
-	free_stack(top->stack_a, top);
-	free_stack(top->stack_b, top);
+	dst[j + i] = '\0';
+	return (i + ft_strlen(src));
 }
