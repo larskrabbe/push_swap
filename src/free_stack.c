@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/13 16:10:54 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/19 18:27:09 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	free_strings(char **strings)
 	int	i;
 
 	i = 0;
-	while (strings[i] != NULL)
+	while (strings[i + 1] != NULL)
 	{
-		free(strings[i]);
+		// free(strings[i]);
 		i++;
 	}
-	free(strings);
+	// free(strings);
 }
 
 void	free_stack(t_stack *stack, t_both *top)
