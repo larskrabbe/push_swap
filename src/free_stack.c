@@ -6,7 +6,7 @@
 /*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 17:19:55 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/19 18:27:09 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:32:59 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	free_strings(char **strings)
 	int	i;
 
 	i = 0;
-	while (strings[i + 1] != NULL)
+	while (strings[i] != NULL)
 	{
-		// free(strings[i]);
+		free(strings[i]);
 		i++;
 	}
-	// free(strings);
+	free(strings);
 }
 
 void	free_stack(t_stack *stack, t_both *top)

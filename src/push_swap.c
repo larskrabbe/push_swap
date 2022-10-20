@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrabbe <lkrabbe@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:06:57 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/13 15:59:57 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:33:42 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_stack	*stack_setup(int argv, char *argc[], t_both *top)
 		if (strings == NULL)
 			my_error("ft_split failed", top);
 		strings_to_struct(strings, top, num);
-		free(strings);
+		free_strings(strings);
 		p++;
 	}
 	return (add_index(top->stack_a, top->max, top));

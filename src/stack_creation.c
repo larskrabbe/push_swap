@@ -6,7 +6,7 @@
 /*   By: lkrabbe < lkrabbe@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:49:35 by lkrabbe           #+#    #+#             */
-/*   Updated: 2022/10/19 19:12:02 by lkrabbe          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:32:40 by lkrabbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,18 +135,10 @@ void	strings_to_struct(char **str, t_both *top, long long int num)
 		if (top->stack_a != NULL && look_for_value(top->stack_a, num) != NULL)
 		{
 			free_strings(str);
-			// while(str[i] != NULL)
-			// {
-			// 	free(str[i]);
-			// 	i++;
-			// }
-			// free(str);
 			my_error("value already exist", top);
 		}
 		add_stack(top, num);
 		top->max++;
-		if (str[i] != NULL)
-			free(str[i]);
 		i++;
 	}
 }
